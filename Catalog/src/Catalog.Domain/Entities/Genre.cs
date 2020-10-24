@@ -7,6 +7,6 @@ namespace Catalog.Domain.Entities
     {
         public Guid Id { get; set; }
         public string Description { get; set; }
-        public ICollection<Item> items { get; set; }
+        public ICollection<Item> Items { get; set; }
     }
 }
