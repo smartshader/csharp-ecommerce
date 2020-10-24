@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Catalog.Domain.Repositories;
 using Catalog.Domain.Entities;
+using Catalog.Infrastructure.SchemaDefinitions;
 
 namespace Catalog.Infrastructure
 {
@@ -17,6 +18,8 @@ namespace Catalog.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ItemEntitySchemaDefinition());
+            base.OnModelCreating(modelBuilder);
         }
 
         public async Task<bool> SaveEntitiesAsync(
