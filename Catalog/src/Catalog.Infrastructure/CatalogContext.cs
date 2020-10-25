@@ -19,6 +19,8 @@ namespace Catalog.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ItemEntitySchemaDefinition());
+            modelBuilder.ApplyConfiguration(new GenreEntitySchemaDefinition());
+            modelBuilder.ApplyConfiguration(new ArtistEntitySchemaDefinition());
             base.OnModelCreating(modelBuilder);
         }
 
