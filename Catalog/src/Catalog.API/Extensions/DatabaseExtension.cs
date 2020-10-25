@@ -11,7 +11,6 @@ namespace Catalog.API.Extensions
             this IServiceCollection services, IConfiguration config)
         {
             return services
-                .AddEntityFrameworkNpgsql()
                 .AddDbContext<CatalogContext>(contextOptions =>
                     contextOptions.UseNpgsql(config.GetConnectionString("DefaultConnection")));
         }
