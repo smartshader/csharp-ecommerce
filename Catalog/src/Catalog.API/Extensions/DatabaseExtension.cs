@@ -13,7 +13,7 @@ namespace Catalog.API.Extensions
             return services
                 .AddEntityFrameworkNpgsql()
                 .AddDbContext<CatalogContext>(contextOptions =>
-                    contextOptions.UseNpgsql(config.GetConnectionString("ConnectionString")));
+                    contextOptions.UseNpgsql(config.GetConnectionString("DefaultConnection")));
         }
     }
 }
