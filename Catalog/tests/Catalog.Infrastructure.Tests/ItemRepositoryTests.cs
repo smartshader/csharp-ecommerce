@@ -40,5 +40,22 @@ namespace Catalog.Infrastructure.Tests
             
             result.ShouldBeNull();
         }
+
+        [Theory]
+        [InlineData("b5b05534-9263-448c-a69e-0bbd8b3eb90e")]
+        public async Task should_return_record_by_id(string guid)
+        {
+            var options = new DbContextOptionsBuilder<CatalogContext>()
+                .UseInMemoryDatabase(databaseName: "should_returns_record_by_id")
+                .Options;
+            
+            await using var context = new TestCatalogContext(options);
+            context.Database.EnsureCreated();
+            
+            var sut = new ItemRepository(context);
+            var result = await sut.GetAsync(new Guid(guid));
+            
+            result.ShouldNotBeNull();
+        }
     }
 }
